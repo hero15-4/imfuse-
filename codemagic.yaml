@@ -37,8 +37,4 @@ workflows:
       - C:\build\**\*.exe
       - C:\build\**\*.msi
 
-    publishing:
-      email:
-        recipients:
-          - "your-email@example.com"
-        notify: SUCCESS
+    
