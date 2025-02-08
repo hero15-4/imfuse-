@@ -1,0 +1,44 @@
+workflows:
+  windows-build:
+    name: Windows Build (x2)
+    max_build_duration: 60  # Set max build time in minutes
+    instance_type: windows_x2  # Uses two Windows machines
+
+    environment:
+      groups:
+        - windows_credentials  # Reference to environment variables
+      vars:
+        BUILD_DIR: "C:\\build"
+
+    scripts:
+      - name: Set up build environment
+        script: |
+          echo "Setting up build directory..."
+          mkdir -p $BUILD_DIR
+          cd $BUILD_DIR
+
+      - name: Install dependencies
+        script: |
+          echo "Installing dependencies..."
+          choco install git -y
+          choco install nodejs -y  # Example, modify as needed
+
+      - name: Build application
+        script: |
+          echo "Building the application..."
+          msbuild YourProject.sln /p:Configuration=Release
+
+      - name: Run tests
+        script: |
+          echo "Running tests..."
+          dotnet test YourProject.sln --configuration Release
+
+    artifacts:
+      - C:\build\**\*.exe
+      - C:\build\**\*.msi
+
+    publishing:
+      email:
+        recipients:
+          - "your-email@example.com"
+        notify: SUCCESS
