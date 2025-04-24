@@ -1,5 +1,5 @@
 workflows:
   windows-build:
-    name: Windows Build (x2)
+    name: Macos Build (x2)
     max_build_duration: 120  # Set max build time in minutes
-    instance_type: windows_x2  # Uses two Windows machines
+    instance_type: mac_mini_m2  # Uses two Windows machines
