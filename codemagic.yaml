@@ -1,5 +1,5 @@
 workflows:
   windows-build:
-    name: Windows Build (x2)
+    name: UBuild (x2)
     max_build_duration: 120  # Set max build time in minutes
-    instance_type: windows_x2  # Uses two Windows machines
+    instance_type: linux_x2  # Uses two Windows machines
